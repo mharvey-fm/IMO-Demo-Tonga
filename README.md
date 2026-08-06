@@ -21,6 +21,19 @@ No login, no install — just open `index.html`.
 | **Demo Hull Inspection Report** | `report/index.html` | Placeholder until the live MarineStream report is published (~30 min after inspection) |
 | **BFMP Generator** | `bfmp/index.html` | Vessel-specific Biofouling Management Plan wizard |
 
+## Course context
+
+The demonstration sits inside the MTCC Pacific capacity-building training course on
+biofouling risk assessment, inspection methodologies and in-water cleaning
+(18–21 August 2026). Audience: Tongan policymakers, regulators and port authorities.
+
+## Why this technology fits Tonga
+
+Portable, self-contained and vessel-independent — no dry dock, slipway, crane or fixed
+shore facility. The Pivot covers niche areas and non-ferrous hulls; the DT640 covers
+systematic steel-hull surveys. Fouling Ratings in MarineStream support monitoring over
+time and evidence-based national biofouling management.
+
 ## Demonstration technology
 
 - **Deep Trekker Pivot** — flying ROV for niche areas (sea chests, gratings, thrusters, rudder, propeller, intakes, anodes, waterline); also inspects aluminium, fibreglass and composite hulls
