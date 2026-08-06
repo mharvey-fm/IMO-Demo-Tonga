@@ -1,1 +1,56 @@
-# IMO-Demo-Tonga
+# Tonga National Technology Demonstration & Training Workshop — Participant Portal
+
+A simple, client-side **participant portal** for the **Tonga National Technology
+Demonstration Pilot**, delivered within the **MTCC Pacific capacity-building training
+course** under the **IMO–Norad TEST Biofouling Project** (procurement IMO-2026-RFP-017).
+
+- **When:** 18–21 August 2026 (live demonstration day within the course — confirmed by MTCC Pacific)
+- **Where:** Faua Wharf, Nukuʻalofa, Tongatapu, Kingdom of Tonga
+- **Delivered by:** Franmarine Underwater Services (technology provider), IMO TEST Biofouling
+  Project Coordination Unit (PCU), MTCC Pacific (SPC · SPREP), and the Marine and Ports
+  Division (Ministry of Infrastructure)
+
+No login, no install — just open `index.html`.
+
+## What's inside
+
+| Tool | Path | Description |
+|------|------|-------------|
+| **Participant portal** | `index.html` | Branded landing page linking the workshop tools |
+| **Hull Fouling Cost Calculator** | `calculator/index.html` | Estimates fuel, cost and emissions penalty from hull fouling |
+| **Demo Hull Inspection Report** | `report/index.html` | Placeholder until the live MarineStream report is published (~30 min after inspection) |
+| **BFMP Generator** | `bfmp/index.html` | Vessel-specific Biofouling Management Plan wizard |
+
+## Demonstration technology
+
+- **Deep Trekker Pivot** — flying ROV for niche areas (sea chests, gratings, thrusters, rudder, propeller, intakes, anodes, waterline); also inspects aluminium, fibreglass and composite hulls
+- **Deep Trekker DT640** — magnetic-tracked hull crawler for systematic lane coverage of ferrous hull plating
+- **MarineStream** — live annotation of Fouling Ratings and IMO 2023-aligned report generation
+- **Starlink** — primary on-site connectivity for live video projection to participants
+
+## Hosting
+
+Pure static HTML/CSS/JS. Deploy with **GitHub Pages** (Settings → Pages → deploy from
+`main`, root) or any static host. A `.nojekyll` file is included so all assets are served
+as-is.
+
+Custom domain (optional): `tongabiofoulingdemo.andagainapps.com` via `CNAME`.
+
+## Inspection report
+
+The report page shows a placeholder until the live Faua Wharf ROV demo report is ready
+(about 30 minutes after the inspection is complete).
+
+## Reporting invasive marine species in Tonga
+
+Report suspected invasive marine species to the **Department of Environment (MEIDECC)**
+and **Biosecurity** authorities, and notify the **Marine and Ports Division**
+(Ministry of Infrastructure) / **Ports Authority Tonga** as appropriate for vessel-related
+sightings.
+
+## Credits
+
+- Live demonstration technology by **Franmarine Underwater Services**.
+- Cost calculator tools by **MarineStream**.
+- Partner organisation names/logos are used to identify the project partnership only.
+- Regional implementing partner: MTCC Pacific (SPC · SPREP).

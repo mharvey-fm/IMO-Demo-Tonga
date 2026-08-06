@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Portal | Tonga National Technology Demonstration &amp; Training Workshop</title>
+    <meta name="description" content="Participant portal for the Tonga National Technology Demonstration Pilot under the IMO–Norad TEST Biofouling Project. Faua Wharf, Nukuʻalofa, 18–21 August 2026.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/portal.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { width: min(1140px, 92vw); margin: 0 auto; }
+        a { color: inherit; }
+
+        /* ===== Section ===== */
+        section { padding: 64px 0; }
+        .section-head { text-align: center; max-width: 62ch; margin: 0 auto 38px; }
+        .section-head .kicker {
+            color: var(--teal); font-weight: 700; letter-spacing: .12em;
+            text-transform: uppercase; font-size: .78rem;
+        }
+        .section-head h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; margin: 8px 0 10px; color: var(--imo-navy); }
+        .section-head p { color: var(--muted); }
+
+        /* ===== Tool cards ===== */
+        .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; }
+        .tool {
+            position: relative; display: flex; flex-direction: column;
+            background: var(--white); border: 1px solid var(--line);
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow); transition: transform .18s ease, box-shadow .18s ease;
+            text-decoration: none; color: inherit;
+        }
+        .tool:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .tool-banner { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 3.4rem; }
+        .tool-banner.calc  { background: linear-gradient(135deg, #1E4D78, #0b2e4f); }
+        .tool-banner.report { background: linear-gradient(135deg, var(--maroon), #8a0000); }
+        .tool-banner.bfmp   { background: linear-gradient(135deg, #0fa39b, #0b6e74); }
+        .tool-body { padding: 24px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+        .tool-body h3 { font-size: 1.28rem; font-weight: 800; color: var(--imo-navy); }
+        .tool-body .lede { color: var(--muted); margin: 8px 0 16px; flex: 1; }
+        .tool-body ul { list-style: none; margin: 0 0 20px; display: grid; gap: 7px; }
+        .tool-body li { position: relative; padding-left: 24px; font-size: .92rem; color: #33444f; }
+        .tool-body li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 800; }
+        .tool-cta {
+            display: inline-flex; align-items: center; gap: 9px; align-self: flex-start;
+            background: var(--imo-navy); color: #fff; font-weight: 700;
+            padding: 11px 20px; border-radius: 10px; font-size: .95rem;
+            transition: background .15s ease, gap .15s ease;
+        }
+        .tool:hover .tool-cta { background: var(--un-blue); gap: 13px; }
+
+        /* ===== Workshop info ===== */
+        .info { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+        .info-card { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+        .info-card .ic { font-size: 1.6rem; }
+        .info-card h4 { margin: 10px 0 6px; color: var(--imo-navy); font-size: 1.05rem; }
+        .info-card p { color: var(--muted); font-size: .92rem; }
+
+        /* ===== Report banner ===== */
+        .report {
+            background: linear-gradient(135deg, var(--maroon), #8a0000);
+            color: #fff; border-radius: var(--radius); padding: 30px 32px;
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
+        }
+        .report h3 { font-size: 1.25rem; margin-bottom: 4px; }
+        .report p { color: #ffd9d9; font-size: .95rem; }
+        .report .num {
+            background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+            padding: 12px 20px; border-radius: 12px; font-weight: 800; font-size: 1.05rem; white-space: nowrap;
+        }
+
+        /* ===== Partners ===== */
+        .partners { text-align: center; }
+        .partner-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 6px; }
+        .partner {
+            display: flex; flex-direction: column; gap: 2px; align-items: center; justify-content: center;
+            min-width: 150px; padding: 16px 20px;
+            background: var(--white); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+        }
+        .partner .mark { font-weight: 800; font-size: 1.15rem; color: var(--imo-navy); letter-spacing: .02em; }
+        .partner .sub { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+        /* ===== Footer ===== */
+        footer { background: var(--imo-navy); color: #b9d0e2; padding: 40px 0 30px; font-size: .9rem; }
+        footer .container { display: grid; gap: 18px; }
+        footer .f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
+        footer strong { color: #fff; }
+        footer .muted { color: #7fa0bb; font-size: .82rem; }
+        footer a.link { color: var(--gold); text-decoration: none; font-weight: 600; }
+        .disclaimer { border-top: 1px solid rgba(255,255,255,.12); padding-top: 16px; color: #7fa0bb; font-size: .8rem; }
+
+        @media (max-width: 640px) {
+            .report { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="portal-chrome" data-active="portal" data-base=""></div>
+
+    <header class="portal-page-hero portal-page-hero--home">
+        <div class="container">
+            <span class="eyebrow">
+                <img class="flag" src="assets/to_flag.svg" alt="Flag of Tonga">
+                Tonga · Nukuʻalofa
+            </span>
+            <h1>Tonga National Technology Demonstration &amp; <span class="accent">Training Workshop</span></h1>
+            <p class="hero-sub">Live in-water ROV inspection demonstration at Faua Wharf — part of the MTCC Pacific capacity-building training course under the IMO–Norad TEST Biofouling Project. Fouling Rating assessment, niche-area inspection and MarineStream digital reporting aligned with the 2023 IMO Biofouling Guidelines.</p>
+            <div class="hero-meta">
+                <span class="meta-chip"><span class="ic">📅</span> 18–21 August 2026</span>
+                <span class="meta-chip"><span class="ic">📍</span> Faua Wharf, Nukuʻalofa</span>
+                <span class="meta-chip"><span class="ic">🤝</span> IMO PCU · MTCC Pacific · Marine &amp; Ports</span>
+            </div>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#f5f8fb" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
+        </svg>
+    </header>
+
+    <!-- Tools -->
+    <section id="tools">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">Workshop Resources</div>
+                <h2>Your participant toolkit</h2>
+                <p>Three practical, browser-based tools used in the demonstration. No sign-in, no install — open them on your phone, tablet or laptop.</p>
+            </div>
+            <div class="tools">
+                <a class="tool" href="calculator/index.html">
+                    <div class="tool-banner calc">📊</div>
+                    <div class="tool-body">
+                        <h3>Hull Fouling Cost Calculator</h3>
+                        <p class="lede">Estimate the added fuel, cost and greenhouse-gas penalty of hull fouling for a vessel — making the case for proactive biofouling management.</p>
+                        <ul>
+                            <li>Fuel &amp; emissions impact by fouling level</li>
+                            <li>Based on UoM hull-scanning drag research</li>
+                            <li>Interactive charts &amp; scenario comparison</li>
+                        </ul>
+                        <span class="tool-cta">Open the calculator →</span>
+                    </div>
+                </a>
+                <a class="tool" href="report/index.html">
+                    <div class="tool-banner report">📋</div>
+                    <div class="tool-body">
+                        <h3>Demo Hull Inspection Report</h3>
+                        <p class="lede">The MarineStream inspection report from the Faua Wharf demonstration — available here about 30 minutes after the inspection is complete.</p>
+                        <ul>
+                            <li>Published shortly after the live ROV demo</li>
+                            <li>Hull &amp; niche-area Fouling Ratings</li>
+                            <li>Aligned with the 2023 IMO Biofouling Guidelines</li>
+                        </ul>
+                        <span class="tool-cta">View the report →</span>
+                    </div>
+                </a>
+                <a class="tool" href="bfmp/index.html">
+                    <div class="tool-banner bfmp">📄</div>
+                    <div class="tool-body">
+                        <h3>Biofouling Management Plan Generator</h3>
+                        <p class="lede">Build a vessel-specific BFMP and optional Biofouling Record Book aligned with the 2023 IMO Biofouling Guidelines — a guided wizard that previews and prints to PDF in your browser.</p>
+                        <ul>
+                            <li>5-step wizard: vessel details through management procedures</li>
+                            <li>Anti-fouling systems, inspection &amp; cleaning schedules</li>
+                            <li>Preview and print / save as PDF — no install required</li>
+                        </ul>
+                        <span class="tool-cta">Open the generator →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop info -->
+    <section class="info">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">About the Workshop</div>
+                <h2>What the demonstration covers</h2>
+                <p>Delivered within the MTCC Pacific capacity-building training course by Franmarine Underwater Services, with the IMO TEST Biofouling Project Coordination Unit (PCU), MTCC Pacific (SPC · SPREP), and the Marine and Ports Division (Ministry of Infrastructure).</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="ic">🤖</div>
+                    <h4>Flying ROV — niche areas</h4>
+                    <p>Deep Trekker Pivot inspection of sea chests, gratings, thrusters, rudders, propellers, intakes, anodes and the waterline.</p>
+                </div>
+                <div class="info-card">
+                    <div class="ic">🧲</div>
+                    <h4>Hull crawler survey</h4>
+                    <p>Deep Trekker DT640 magnetic-tracked lane coverage of main hull plating, vertical sides, flats and bilge keels.</p>
+                </div>
+                <div class="info-card">
+                    <div class="ic">📋</div>
+                    <h4>Fouling Rating assessment</h4>
+                    <p>Live annotation in MarineStream against hull zones and niche areas, aligned with the 2023 IMO Biofouling Guidelines (MEPC.378(80)).</p>
+                </div>
+                <div class="info-card">
+                    <div class="ic">📡</div>
+                    <h4>Live demo at Faua Wharf</h4>
+                    <p>Real-time video projection to participants via MarineStream over Starlink — one demonstration day within 18–21 August 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report banner -->
+    <section>
+        <div class="container">
+            <div class="report">
+                <div>
+                    <h3>Spotted a suspect invasive species?</h3>
+                    <p>Keep the specimen and photos, note the vessel's recent ports, and report to the Department of Environment (MEIDECC) and Biosecurity authorities.</p>
+                </div>
+                <div class="num">📞 Emergency 911 &nbsp;·&nbsp; Marine &amp; Ports / DoE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">Delivered in partnership</div>
+                <h2>Project partners</h2>
+            </div>
+            <div class="partner-row">
+                <div class="partner"><span class="mark">IMO</span><span class="sub">Int'l Maritime Org.</span></div>
+                <div class="partner"><span class="mark">Norad</span><span class="sub">Funding Partner</span></div>
+                <div class="partner"><span class="mark">TEST Biofouling</span><span class="sub">IMO Project</span></div>
+                <div class="partner"><span class="mark">GloFouling</span><span class="sub">GEF·UNDP·IMO</span></div>
+                <div class="partner"><span class="mark">MTCC Pacific</span><span class="sub">SPC · SPREP</span></div>
+                <div class="partner"><span class="mark">MOI</span><span class="sub">Marine &amp; Ports</span></div>
+                <div class="partner"><span class="mark">DoE</span><span class="sub">MEIDECC · Tonga</span></div>
+                <div class="partner"><span class="mark">Franmarine</span><span class="sub">Technology Provider</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="f-top">
+                <div>
+                    <strong>Tonga National Technology Demonstration &amp; Training Workshop</strong><br>
+                    <span class="muted">IMO–Norad TEST Biofouling Project · MTCC Pacific course · Faua Wharf, Nukuʻalofa · 18–21 August 2026</span>
+                </div>
+                <div>
+                    <a class="link" href="https://www.glofouling.imo.org" target="_blank" rel="noopener">glofouling.imo.org</a> &nbsp;·&nbsp;
+                    <a class="link" href="https://testbiofouling.imo.org/" target="_blank" rel="noopener">testbiofouling.imo.org</a>
+                </div>
+            </div>
+            <div class="disclaimer">
+                This participant portal is an educational resource for the capacity-building training course. Live demonstration technology provided by Franmarine Underwater Services; cost calculator tools by MarineStream. Logos and names of partner organisations are used for identification of the project partnership only. Regional implementing partner: MTCC Pacific (SPC · SPREP).
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/portal-nav.js"></script>
+</body>
+</html>
