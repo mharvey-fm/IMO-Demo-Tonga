@@ -45,6 +45,92 @@
 .portal-topbar strong { color: #fff; }
 .portal-topbar .tag { color: var(--gold); font-weight: 600; }
 
+.portal-topbar .topbar-actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+}
+
+.portal-topbar .qr-toggle {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, .35);
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+}
+
+.portal-topbar .qr-toggle:hover {
+    background: rgba(255, 255, 255, .2);
+    border-color: rgba(255, 255, 255, .55);
+}
+
+.portal-topbar .qr-toggle[aria-pressed="true"] {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--imo-navy);
+}
+
+.portal-page-hero--qr .container {
+    padding: 28px 0 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.portal-page-hero--home.portal-page-hero--qr .container {
+    padding: 36px 0 48px;
+}
+
+.portal-qr-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.portal-qr-kicker {
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+}
+
+.portal-qr-img {
+    display: block;
+    width: min(72vw, 420px);
+    height: auto;
+    aspect-ratio: 1;
+    background: #fff;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+}
+
+.portal-qr-hint {
+    margin: 0;
+    color: #d7e7f4;
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+@media (min-width: 900px) {
+    .portal-qr-img {
+        width: min(48vw, 520px);
+        padding: 22px;
+    }
+}
+
 .portal-tabs {
     background: var(--white);
     border-bottom: 1px solid var(--line);
@@ -230,5 +316,6 @@ header.portal-page-hero h3 {
     .portal-page-hero .container { padding: 28px 0 36px; }
     .portal-page-hero--home .container { padding: 40px 0 110px; }
     .portal-topbar .tag { font-size: .75rem; }
+    .portal-qr-img { width: min(84vw, 360px); padding: 14px; }
 }
-}
+

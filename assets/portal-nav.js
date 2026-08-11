@@ -6,6 +6,7 @@
 
     var active = mount.dataset.active || 'portal';
     var base = mount.dataset.base || '';
+    var qrSrc = base + 'assets/qrCodeTongaApp.png';
 
     var tabs = [
         { id: 'portal', href: base + 'index.html', icon: '🏠', label: 'Portal' },
@@ -22,7 +23,10 @@
     topbar.innerHTML =
         '<div class="container">' +
             '<span><strong>IMO–Norad TEST Biofouling Project</strong> · National Demonstration &amp; Training</span>' +
-            '<span class="tag">Participant Portal — no login required</span>' +
+            '<span class="topbar-actions">' +
+                '<button type="button" class="qr-toggle" aria-pressed="false" aria-controls="portal-qr-panel">Show QR Code</button>' +
+                '<span class="tag">Participant Portal — no login required</span>' +
+            '</span>' +
         '</div>';
 
     var nav = document.createElement('nav');
@@ -45,4 +49,54 @@
     chrome.appendChild(topbar);
     chrome.appendChild(nav);
     mount.replaceWith(chrome);
+
+    var hero = document.querySelector('header.portal-page-hero');
+    var toggle = chrome.querySelector('.qr-toggle');
+    if (!hero || !toggle) return;
+
+    var heroChildren = Array.prototype.slice.call(hero.childNodes);
+    var qrPanel = null;
+    var showing = false;
+
+    function buildQrPanel() {
+        var panel = document.createElement('div');
+        panel.id = 'portal-qr-panel';
+        panel.className = 'portal-qr-panel container';
+        panel.setAttribute('role', 'region');
+        panel.setAttribute('aria-label', 'App QR code');
+        panel.innerHTML =
+            '<p class="portal-qr-kicker">Scan to open the participant portal</p>' +
+            '<img class="portal-qr-img" src="' + qrSrc + '" alt="QR code linking to the Tonga participant portal" width="480" height="480">' +
+            '<p class="portal-qr-hint">Point your phone camera at the code</p>';
+        return panel;
+    }
+
+    function showQr() {
+        if (showing) return;
+        showing = true;
+        heroChildren.forEach(function (node) { hero.removeChild(node); });
+        qrPanel = buildQrPanel();
+        hero.appendChild(qrPanel);
+        hero.classList.add('portal-page-hero--qr');
+        toggle.textContent = 'Hide QR Code';
+        toggle.setAttribute('aria-pressed', 'true');
+        document.body.classList.add('qr-mode');
+    }
+
+    function hideQr() {
+        if (!showing) return;
+        showing = false;
+        if (qrPanel && qrPanel.parentNode === hero) hero.removeChild(qrPanel);
+        qrPanel = null;
+        heroChildren.forEach(function (node) { hero.appendChild(node); });
+        hero.classList.remove('portal-page-hero--qr');
+        toggle.textContent = 'Show QR Code';
+        toggle.setAttribute('aria-pressed', 'false');
+        document.body.classList.remove('qr-mode');
+    }
+
+    toggle.addEventListener('click', function () {
+        if (showing) hideQr();
+        else showQr();
+    });
 })();
