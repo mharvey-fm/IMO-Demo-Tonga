@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspecting in Poor Visibility | Tonga National Technology Demonstration &amp; Training Workshop</title>
+<meta name="description" content="ROV hull inspection in poor visibility — good and near-zero visibility footage side by side, and the operational method: closer passes, angled lights, sonar for navigation, and recording visibility as a limitation on the Fouling Rating.">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/portal.css">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Slightly wider than the standard portal measure — this page is led by the footage. */
+    .container { width: min(1240px, 94vw); margin: 0 auto; }
+    .portal-page-hero .container { width: min(1240px, 94vw); padding: 34px 0 112px; }
+
+    /* ===== Comparison, on the dark hero so the near-white poor-vis frame reads as water ===== */
+    .compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 32px;
+    }
+
+    .compare video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 14px;
+        background: #0a1a28;
+        box-shadow: 0 26px 54px rgba(0, 0, 0, .45);
+    }
+
+    .compare figcaption {
+        margin-top: 14px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #eaf3fa;
+    }
+
+    .compare figcaption .dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        margin-right: 9px;
+        vertical-align: 1px;
+    }
+
+    .compare .good .dot { background: var(--teal); }
+    .compare .poor .dot { background: #9fb3c2; }
+
+    .compare figcaption .qual {
+        font-size: .86rem;
+        font-weight: 500;
+        color: #9fc0da;
+    }
+
+    .compare figcaption .qual::before { content: "— "; }
+
+    /* ===== Method ===== */
+    .method { flex: 1; padding: 54px 0 76px; }
+
+    footer {
+        flex-shrink: 0;
+        background: var(--imo-navy);
+        color: #7fa0bb;
+        padding: 20px 0;
+        font-size: .8rem;
+        text-align: center;
+    }
+
+    .method-grid {
+        display: grid;
+        grid-template-columns: 390px 1fr;
+        gap: 52px;
+        align-items: start;
+    }
+
+    .method figure img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+    }
+
+    .method figcaption { margin-top: 15px; }
+
+    .method figcaption .lbl {
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--teal);
+    }
+
+    .method figcaption p {
+        margin-top: 7px;
+        font-size: 1.14rem;
+        font-weight: 600;
+        line-height: 1.35;
+        color: var(--imo-navy);
+    }
+
+    .method .kicker {
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--teal);
+    }
+
+    .method h2 {
+        margin: 9px 0 0;
+        font-size: clamp(1.45rem, 2.7vw, 2rem);
+        font-weight: 800;
+        letter-spacing: -.01em;
+        line-height: 1.18;
+        color: var(--imo-navy);
+    }
+
+    .script {
+        display: grid;
+        gap: 17px;
+        margin-top: 20px;
+        max-width: 66ch;
+        font-size: 1.09rem;
+        line-height: 1.75;
+        color: #3a4c59;
+    }
+
+    .script b { font-weight: 700; color: var(--imo-navy); }
+
+    @media (max-width: 860px) {
+        .portal-page-hero .container { padding: 26px 0 86px; }
+        .compare { grid-template-columns: 1fr; gap: 24px; }
+        .compare video { border-radius: 10px; }
+        /* Let the qualifier drop to its own line rather than fighting the label for width. */
+        .compare figcaption .qual { display: block; margin-top: 1px; }
+        .compare figcaption .qual::before { content: none; }
+        .method { padding: 38px 0 56px; }
+        .method-grid { grid-template-columns: 1fr; gap: 30px; }
+        .script { font-size: 1.04rem; max-width: none; }
+    }
+</style>
+</head>
+<body>
+
+<div id="portal-chrome" data-active="visibility" data-base="../"></div>
+
+<header class="portal-page-hero">
+    <div class="container">
+        <span class="eyebrow">Field conditions</span>
+        <h1>Inspecting in <span class="accent">poor visibility</span></h1>
+        <p class="hero-sub">The same inspection task in clear water and in near-zero visibility. The ROV still flies and still records — what changes is how much we can actually assess.</p>
+
+        <div class="compare">
+            <figure class="good">
+                <video data-hd="../assets/vis-good.mp4" data-sm="../assets/vis-good-sm.mp4"
+                       poster="../assets/vis-good-poster.jpg"
+                       autoplay muted loop playsinline preload="auto"
+                       aria-label="ROV footage of a hull in good visibility"></video>
+                <figcaption><span class="dot" aria-hidden="true"></span>Good visibility <span class="qual">plating, welds and anodes all assessable</span></figcaption>
+            </figure>
+            <figure class="poor">
+                <video data-hd="../assets/vis-poor.mp4" data-sm="../assets/vis-poor-sm.mp4"
+                       poster="../assets/vis-poor-poster.jpg"
+                       autoplay muted loop playsinline preload="auto"
+                       aria-label="ROV footage in near-zero visibility"></video>
+                <figcaption><span class="dot" aria-hidden="true"></span>Poor visibility <span class="qual">backscatter only, nothing to rate</span></figcaption>
+            </figure>
+        </div>
+    </div>
+    <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="#f5f8fb" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
+    </svg>
+</header>
+
+<section class="method">
+    <div class="container">
+        <div class="method-grid">
+            <figure>
+                <img src="../assets/vis-poor-still.jpg" alt="A steel A-frame structure only faintly visible through turbid green water" loading="lazy">
+                <figcaption>
+                    <div class="lbl">Structure ahead</div>
+                    <p>Enough to see it. Not enough to rate it.</p>
+                </figcaption>
+            </figure>
+
+            <div>
+                <div class="kicker">How we work it</div>
+                <h2>Inspecting in poor visibility — ROV</h2>
+                <div class="script">
+                    <p>When the vis drops, we bring the ROV in <b>closer to the hull and slow down</b>. Passes are <b>narrower with more overlap</b>, so we're covering less ground per pass but not missing anything.</p>
+                    <p>Lights get <b>angled off to the side and turned down</b> - pointing them straight ahead in dirty water just lights up the particles in front of the camera and washes the picture out.</p>
+                    <p><b>Sonar does the heavy lifting</b> for getting around: it gives us range to the hull well past what we can see, picks up heavy growth and structure, and lets us track along seams, frames, anodes and sea chest gratings to know where we are.</p>
+                    <p>What it won't do is tell us what the fouling actually is - <b>that still needs eyes on it</b>. So if the vis stopped us properly assessing a section, we <b>note it as a limitation</b>, qualify the rating, and recommend a re-inspection rather than guessing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">Franmarine · MarineStream · Tonga National Technology Demonstration &amp; Training Workshop</div>
+</footer>
+
+<script src="../assets/portal-nav.js"></script>
+<script>
+(function () {
+    // Pick the encode that suits the size the clip is actually painted at, so phones
+    // and standard-density screens never pull the 720p files. Assigning src here
+    // rather than in the markup keeps it to one download per clip.
+    var dpr = window.devicePixelRatio || 1;
+
+    document.querySelectorAll('video[data-hd]').forEach(function (v) {
+        var css = v.getBoundingClientRect().width;
+        var needed = css * dpr;
+        v.src = (!css || needed > 1000) ? v.dataset.hd : v.dataset.sm;
+        v.play().catch(function () {});
+    });
+})();
+</script>
+</body>
+</html>

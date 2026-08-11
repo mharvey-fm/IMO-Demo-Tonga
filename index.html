@@ -35,6 +35,8 @@
 
         /* ===== Tool cards ===== */
         .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; }
+        /* Four cards read better as a 2x2 block than as a row of three with one orphan. */
+        @media (min-width: 900px) { .tools { grid-template-columns: repeat(2, 1fr); } }
         .tool {
             position: relative; display: flex; flex-direction: column;
             background: var(--white); border: 1px solid var(--line);
@@ -47,6 +49,7 @@
         .tool-banner.calc  { background: linear-gradient(135deg, #1E4D78, #0b2e4f); }
         .tool-banner.report { background: linear-gradient(135deg, var(--maroon), #8a0000); }
         .tool-banner.bfmp   { background: linear-gradient(135deg, #0fa39b, #0b6e74); }
+        .tool-banner.vis    { background: linear-gradient(135deg, #5d7c91, #2a4a63); }
         .tool-body { padding: 24px 24px 26px; flex: 1; display: flex; flex-direction: column; }
         .tool-body h3 { font-size: 1.28rem; font-weight: 800; color: var(--imo-navy); }
         .tool-body .lede { color: var(--muted); margin: 8px 0 16px; flex: 1; }
@@ -136,7 +139,7 @@
             <div class="section-head">
                 <div class="kicker">Workshop Resources</div>
                 <h2>Your participant toolkit</h2>
-                <p>Three practical, browser-based tools used in the demonstration. No sign-in, no install — open them on your phone, tablet or laptop.</p>
+                <p>Four practical, browser-based resources used in the demonstration. No sign-in, no install — open them on your phone, tablet or laptop.</p>
             </div>
             <div class="tools">
                 <a class="tool" href="calculator/index.html">
@@ -176,6 +179,19 @@
                             <li>Preview and print / save as PDF — no install required</li>
                         </ul>
                         <span class="tool-cta">Open the generator →</span>
+                    </div>
+                </a>
+                <a class="tool" href="visibility/index.html">
+                    <div class="tool-banner vis">🌫️</div>
+                    <div class="tool-body">
+                        <h3>Inspecting in Poor Visibility</h3>
+                        <p class="lede">Side-by-side ROV footage of the same job in good and near-zero visibility, and the method we use when the water turns — closer passes, angled lights and sonar for navigation.</p>
+                        <ul>
+                            <li>Good vs poor visibility, same inspection task</li>
+                            <li>Why sonar navigates but eyes still rate the fouling</li>
+                            <li>Recording visibility as a limitation on the rating</li>
+                        </ul>
+                        <span class="tool-cta">View the briefing →</span>
                     </div>
                 </a>
             </div>

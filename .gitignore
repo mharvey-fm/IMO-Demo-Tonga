@@ -1,2 +1,7 @@
 .tools/
 
+# Uncompressed camera originals — the web-ready versions in assets/vis-*.mp4 are committed instead
+assets/CI Footage.mp4
+assets/Sea Wall Footage.mp4
+assets/Sri Lanka A-Frame.jpg
+

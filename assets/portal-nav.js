@@ -12,7 +12,8 @@
         { id: 'portal', href: base + 'index.html', icon: '🏠', label: 'Portal' },
         { id: 'calculator', href: base + 'calculator/index.html', icon: '📊', label: 'Calculator' },
         { id: 'report', href: base + 'report/index.html', icon: '📋', label: 'Inspection Report' },
-        { id: 'bfmp', href: base + 'bfmp/index.html', icon: '📄', label: 'BFMP Generator' }
+        { id: 'bfmp', href: base + 'bfmp/index.html', icon: '📄', label: 'BFMP Generator' },
+        { id: 'visibility', href: base + 'visibility/index.html', icon: '🌫️', label: 'Poor Visibility' }
     ];
 
     var chrome = document.createElement('div');
