@@ -3,7 +3,7 @@
     if (!C) return;
 
     var params = new URLSearchParams(window.location.search);
-    var track = params.get('track') === 'inspection' ? 'inspection' : 'cleaning';
+    var track = params.get('track') === 'cleaning' ? 'cleaning' : 'inspection';
 
     var intro = document.getElementById('track-intro');
     var grid = document.getElementById('material-grid');
@@ -52,7 +52,7 @@
         a.dataset.kind = doc.kind;
         a.href = C.viewerUrl(doc.id, track);
         var shared = doc.shared
-            ? '<span class="shared-pill">Same slide in both tracks</span>'
+            ? '<span class="shared-pill">Same slide in both</span>'
             : '';
         a.innerHTML =
             '<div class="mat-banner"></div>' +

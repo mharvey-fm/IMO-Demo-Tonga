@@ -10,7 +10,7 @@
     var tracks = {
         cleaning: {
             id: 'cleaning',
-            kicker: 'Track 1',
+            kicker: '',
             title: 'In-water cleaning',
             short: 'Cleaning course',
             icon: '🧽',
@@ -19,12 +19,12 @@
         },
         inspection: {
             id: 'inspection',
-            kicker: 'Track 2',
+            kicker: '',
             title: 'In-water inspections',
             short: 'Inspections',
             icon: '🔍',
             lede: 'The participants manual for conducting and interpreting in-water inspections, plus the shared fouling-rating slide.',
-            hint: 'The manual is the reading pack for this track. The rating guide is the same slide used in the cleaning course.'
+            hint: 'The manual is the reading pack. The rating guide is the same slide used in the cleaning course.'
         }
     };
 
