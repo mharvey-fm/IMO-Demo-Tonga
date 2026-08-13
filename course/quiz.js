@@ -6,7 +6,7 @@
             id: 'q1',
             title: 'What are some of the main reasons for ships wanting to in-water clean?',
             type: 'text',
-            placeholder: 'List the reasons your table agrees on…'
+            placeholder: ''
         },
         {
             id: 'q2',
@@ -28,115 +28,46 @@
         },
         {
             id: 'q5',
-            title: 'What fouling rating (0–4) do the 2023 Biofouling Guidelines suggest ship hulls and internal seawater systems should maintain?',
+            title: 'What fouling rating (i.e. 0-4) does the 2023 Biofouling Guidelines suggest ship hulls and internal seawater systems should maintain? Please circle one.',
             type: 'rating',
-            hint: 'Tap one — the original worksheet asked you to circle it.',
+            hint: 'Fouling Rating',
             helpers: [
-                { href: 'viewer.html?id=activity-6&track=cleaning', label: 'Activity 6 rating slide' }
+                { href: 'viewer.html?id=activity-6&track=cleaning', label: 'Activity 6' }
             ],
             options: [
-                { value: '0', label: 'None' },
-                { value: '1', label: 'Micro' },
-                { value: '2', label: 'Light' },
-                { value: '3', label: 'Medium' },
-                { value: '4', label: 'Heavy' }
+                { value: '0', label: '' },
+                { value: '1', label: '' },
+                { value: '2', label: '' },
+                { value: '3', label: '' },
+                { value: '4', label: '' }
             ]
         },
         {
             id: 'q6',
-            title: 'Why do the 2023 Biofouling Guidelines suggest ship hulls and internal seawater systems maintain that fouling rating?',
+            title: 'Why do the 2023 Biofouling Guidelines suggest ship hulls and internal seawater systems maintain the above fouling rating?',
             type: 'text',
-            placeholder: 'Your table’s reasoning…'
+            placeholder: ''
         },
         {
             id: 'q7',
             title: 'What are other benefits of proactively cleaning ship hulls?',
             type: 'text',
-            placeholder: 'Beyond the rating itself…'
+            placeholder: ''
         },
         {
             id: 'q8',
-            title: 'What is the difference between uniform and niche areas on ship hulls?',
+            title: 'What is the difference between uniform and niches areas on ship hulls?',
             type: 'text',
-            placeholder: 'How do they differ in flow, fouling and cleaning?'
+            placeholder: ''
         },
         {
             id: 'q9',
-            title: 'If a ship operates exclusively within the “same waters”, would you allow the submerged hull to be cleaned without collecting the defouled material?',
+            title: 'If a ship operates exclusively within the “same waters”, would you allow the submerged hull to be cleaned without collecting the defouled material? Please state why or why not?',
             type: 'yesno-text',
-            placeholder: 'State why or why not. Use the ports-of-call register and the example cleaning policy if you need them.',
+            placeholder: '',
             helpers: [
-                { href: 'viewer.html?id=ports-of-call&track=cleaning', label: 'Ports of call register' },
-                { href: 'viewer.html?id=cleaning-policy&track=cleaning', label: 'Cleaning policy example' }
-            ]
-        }
-    ];
-
-    var NOTES = [
-        {
-            q: 'Q1 — Reasons to in-water clean',
-            points: [
-                'Restore hull and propeller efficiency (less drag, less fuel, lower GHG).',
-                'Meet biosecurity / port-entry conditions before arrival.',
-                'Protect coating performance and avoid or defer dry-dock.',
-                'Reduce the risk of transferring invasive aquatic species.'
-            ]
-        },
-        {
-            q: 'Q2 — Two categories',
-            points: [
-                'Proactive cleaning (usually microfouling / slime, often scheduled).',
-                'Reactive cleaning (macrofouling already present; generally higher biosecurity and capture expectations).'
-            ]
-        },
-        {
-            q: 'Q3 — Three aims of the guidance',
-            points: [
-                'Minimise transfer of invasive aquatic species.',
-                'Minimise release of harmful substances (biocides, coating particles / microplastics).',
-                'Give industry and administrations a practical, consistent way to clean without damaging the coating or the receiving environment.'
-            ]
-        },
-        {
-            q: 'Q4 — Three coating types',
-            points: [
-                'Biocidal antifouling coatings (e.g. self-polishing copolymers).',
-                'Foul-release coatings (typically silicone).',
-                'Biocide-free hard / inert coatings.'
-            ]
-        },
-        {
-            q: 'Q5 — Fouling rating',
-            points: [
-                'The 2023 Guidelines (MEPC.378(80)) point to fouling rating 1 — microfouling only — as the level to maintain on hulls and internal seawater systems (rating 0 is cleaner still). Macrofouling (2–4) is what the guidance is trying to avoid.'
-            ]
-        },
-        {
-            q: 'Q6 — Why that rating',
-            points: [
-                'Microfouling is a slime layer; it is much less likely to carry adult invasive species than macrofouling.',
-                'Keeping to FR 1 (or 0) is the practical biosecurity target, and it also keeps drag and coating stress down.'
-            ]
-        },
-        {
-            q: 'Q7 — Other benefits of proactive cleaning',
-            points: [
-                'Fuel and emissions savings, speed maintenance, longer coating life, easier inspections, and fewer last-minute reactive cleans before a sensitive port.'
-            ]
-        },
-        {
-            q: 'Q8 — Uniform vs niche areas',
-            points: [
-                'Uniform (general) hull: large plating with relatively even flow — the area a crawler or systematic survey covers well.',
-                'Niche areas: complex, sheltered, low-flow features (sea chests, gratings, thrusters, rudder, propeller, intakes, dry-docking support strips, anodes). They foul faster and need a flying ROV or diver, not just a hull crawler.'
-            ]
-        },
-        {
-            q: 'Q9 — Same waters, no capture?',
-            points: [
-                'If the ship has truly only operated in those waters, the fouling is likely of local origin, so translocation risk is lower — some administrations then allow cleaning without capture.',
-                'You still need evidence (ports-of-call register). The example policy in this pack is written for interstate or overseas arrivals — a different risk case.',
-                'Caveats: a recent docking elsewhere, niche areas, or uncertainty in the voyage history usually push you back toward capture or a “no clean” decision.'
+                { href: 'viewer.html?id=ports-of-call&track=cleaning', label: 'Ports of Call Register MV Example' },
+                { href: 'viewer.html?id=cleaning-policy&track=cleaning', label: 'In-water Biofouling Cleaning Policy' }
             ]
         }
     ];
@@ -188,9 +119,9 @@
     function renderStart() {
         root.innerHTML =
             '<div class="quiz-card">' +
-                '<div class="q-kicker">Group exercise</div>' +
-                '<h2>Split into tables of 5–6</h2>' +
-                '<p class="lede">Discuss each question, then type the answer your table agrees on. When you have finished, pick a spokesperson — we will go through them together. You can use one phone for the table or each person can follow along.</p>' +
+                '<div class="q-kicker">Module 2 – Understanding Fundamentals</div>' +
+                '<h2>Activity 1 – Let’s Test Your Knowledge</h2>' +
+                '<p class="lede">Split into groups of 5-6, discuss and answer the following questions. When completed, select a spokesperson for your group and we will discuss the answers together.</p>' +
                 '<div class="quiz-start-meta">' +
                     '<span class="chip">9 questions</span>' +
                     '<span class="chip">Saved on this device</span>' +
@@ -238,7 +169,9 @@
             var opts = q.options.map(function (o) {
                 var on = state.answers[q.id] === o.value ? ' is-on' : '';
                 return '<button type="button" class="fr-opt' + on + '" data-fr="' + o.value + '" aria-pressed="' + (on ? 'true' : 'false') + '">' +
-                    '<span class="fr-n">' + o.value + '</span><span class="fr-l">' + o.label + '</span></button>';
+                    '<span class="fr-n">' + o.value + '</span>' +
+                    (o.label ? '<span class="fr-l">' + esc(o.label) + '</span>' : '') +
+                    '</button>';
             }).join('');
             body = '<p class="lede" style="margin-bottom:12px">' + esc(q.hint) + '</p><div class="fr-scale" role="group" aria-label="Fouling rating">' + opts + '</div>';
         } else if (q.type === 'yesno-text') {
@@ -255,7 +188,7 @@
 
         var helpers = '';
         if (q.helpers && q.helpers.length) {
-            helpers = '<p class="lede" style="margin:14px 0 0">Need the source material? ' +
+            helpers = '<p class="lede" style="margin:14px 0 0">' +
                 q.helpers.map(function (h) {
                     return '<a href="' + h.href + '" style="color:var(--teal);font-weight:700">' + esc(h.label) + '</a>';
                 }).join(' · ') + '</p>';
@@ -372,29 +305,17 @@
                 '</div>';
         }).join('');
 
-        var notes = NOTES.map(function (n) {
-            return '<h3>' + esc(n.q) + '</h3><ul>' +
-                n.points.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') +
-                '</ul>';
-        }).join('');
-
-        var group = state.group ? '<p class="lede">Spokesperson pack for <strong>' + esc(state.group) + '</strong>.</p>' : '';
+        var group = state.group ? '<p class="lede"><strong>' + esc(state.group) + '</strong></p>' : '';
 
         root.innerHTML =
             '<div class="quiz-card">' +
-                '<div class="q-kicker">Ready for discussion</div>' +
-                '<h2>Your table’s answers</h2>' +
+                '<div class="q-kicker">Activity 1</div>' +
+                '<h2>Answers</h2>' +
                 group +
-                '<p class="lede">Hand this screen to your spokesperson. Download a PDF for your records, then use the discussion notes if you want talking points — they are not a marked score sheet.</p>' +
                 '<div class="quiz-nav" style="margin-top:0;margin-bottom:8px">' +
                     '<button type="button" class="v-btn primary quiz-download" id="download-pdf">Download answers as PDF</button>' +
-                    '<p class="quiz-download-hint">The PDF saves to your Downloads folder.</p>' +
                 '</div>' +
                 items +
-                '<details class="notes">' +
-                    '<summary>Show discussion notes</summary>' +
-                    notes +
-                '</details>' +
                 '<div class="quiz-nav">' +
                     '<button type="button" class="v-btn" id="back-q">← Last question</button>' +
                     '<button type="button" class="v-btn" id="reset">Clear answers</button>' +

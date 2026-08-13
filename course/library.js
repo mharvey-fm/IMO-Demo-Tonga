@@ -10,9 +10,9 @@
     var tabs = document.querySelectorAll('.track-btn');
 
     document.getElementById('count-cleaning').textContent =
-        (C.docsForTrack('cleaning').length + 1) + ' items · includes the group quiz';
+        (C.docsForTrack('cleaning').length + 1) + ' items';
     document.getElementById('count-inspection').textContent =
-        C.docsForTrack('inspection').length + ' items · shared rating slide';
+        C.docsForTrack('inspection').length + ' items';
 
     function setTrack(next, push) {
         track = next;
@@ -39,7 +39,7 @@
                 '<div class="mat-copy">' +
                     '<div class="mat-kind">' + C.quiz.activity + ' · Group exercise</div>' +
                     '<h3>' + C.quiz.title + '</h3>' +
-                    '<p class="mat-blurb">Nine questions from Module 2. Answer in the app with your table — no Word document needed. Answers stay on this device so you can pass the phone to your spokesperson.</p>' +
+                    '<p class="mat-blurb">' + C.quiz.intro + '</p>' +
                 '</div>' +
                 '<span class="mat-cta">Start the quiz →</span>' +
             '</div>';
@@ -59,7 +59,7 @@
             '<div class="mat-body">' +
                 '<div class="mat-kind">' + doc.activity + shared + '</div>' +
                 '<h3>' + doc.title + '</h3>' +
-                '<p class="mat-blurb">' + doc.blurb + '</p>' +
+                (doc.blurb ? '<p class="mat-blurb">' + doc.blurb + '</p>' : '') +
                 '<div class="mat-meta">' + doc.meta + '</div>' +
                 '<span class="mat-cta">Open in viewer →</span>' +
             '</div>';
@@ -70,7 +70,7 @@
         var t = C.tracks[track];
         intro.innerHTML =
             '<h2>' + t.icon + ' ' + t.title + '</h2>' +
-            '<p>' + t.lede + ' ' + t.hint + '</p>';
+            (t.lede ? '<p>' + t.lede + '</p>' : '');
 
         grid.innerHTML = '';
         if (track === 'cleaning') grid.appendChild(quizCard());

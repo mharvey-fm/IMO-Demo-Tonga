@@ -1,6 +1,6 @@
 /**
- * Participant course library — two tracks matching the printed pack.
- * Activity 6 is the same PDF in both folders; the quiz replaces the Word worksheet.
+ * Course library: Inspection and In-water cleaning folders.
+ * Activity 6 is the same PDF in both.
  */
 (function (global) {
     var ROOT = '../courseMaterial/';
@@ -14,8 +14,8 @@
             title: 'In-water cleaning',
             short: 'Cleaning course',
             icon: '🧽',
-            lede: 'Activities, worked scenarios and policy for deciding when and how a hull may be cleaned — including capture of defouled material.',
-            hint: 'Use these during the group tables. Start with Activity 1, then the scenarios.'
+            lede: 'Activities, MV Example inspection records, ports-of-call register, and in-water cleaning policy.',
+            hint: ''
         },
         inspection: {
             id: 'inspection',
@@ -23,8 +23,8 @@
             title: 'In-water inspections',
             short: 'Inspections',
             icon: '🔍',
-            lede: 'The participants manual for conducting and interpreting in-water inspections, plus the shared fouling-rating slide.',
-            hint: 'The manual is the reading pack. The rating guide is the same slide used in the cleaning course.'
+            lede: 'BFS1906 participants manual and Activity 6 fouling rating / percentage cover guide.',
+            hint: ''
         }
     };
 
@@ -35,8 +35,8 @@
             order: 2,
             kind: 'activity',
             activity: 'Activity 2',
-            title: 'Australia and New Zealand biofouling management requirements',
-            blurb: 'Side-by-side requirements used to compare how two neighbouring administrations manage arriving vessels — the worksheet for Activity 2.',
+            title: 'Aus and NZ Biofouling Management Requirements for Activity 2',
+            blurb: '',
             meta: 'PDF · 5 pages',
             file: CLEANING + 'Aus and NZ Biofouling Management Requirements for Activity 2.pdf'
         },
@@ -46,9 +46,9 @@
             order: 1,
             kind: 'guide',
             activity: 'Activity 6',
-            title: 'Biofouling and percentage cover guides',
-            blurb: 'One-page visual reference for fouling ratings and percentage cover. The same slide is in both the cleaning course and the inspection pack — open it beside a scenario or the live demo.',
-            meta: 'PDF · 1 page · used in both tracks',
+            title: 'Activity 6 - Biofouling and Percentage Cover Guides',
+            blurb: '',
+            meta: 'PDF · 1 page',
             shared: true,
             file: CLEANING + 'Activity 6 - Biofouling and Percentage Cover Guides_compressed.pdf'
         },
@@ -58,9 +58,9 @@
             order: 4,
             kind: 'scenario',
             activity: 'Scenario 1',
-            title: 'Inspection report — MV Example',
-            blurb: 'Worked inspection report for the first table-top scenario. Use it with the ports-of-call register and the rating guide.',
-            meta: 'PDF · inspection report',
+            title: 'Scenario 1 Inspection Report',
+            blurb: '',
+            meta: 'PDF',
             file: CLEANING + 'Scenario 1 Inspection Report.pdf'
         },
         {
@@ -69,9 +69,9 @@
             order: 6,
             kind: 'scenario',
             activity: 'Scenario 2',
-            title: 'Biofouling inspection of the MV Example — November 2018',
-            blurb: 'Second scenario: a later inspection of the same example vessel. Compare change over time with the September record.',
-            meta: 'PDF · case study',
+            title: 'Scenario 2 Biofouling Inspection of the MV Example — November 2018',
+            blurb: '',
+            meta: 'PDF',
             file: CLEANING + 'Scenario 2 Biofouling Inspection of the MV Example_November 2018_V1.0_compressed.pdf'
         },
         {
@@ -80,9 +80,9 @@
             order: 5,
             kind: 'scenario',
             activity: 'Case study',
-            title: 'Biofouling inspection of the MV Example — September 2018',
-            blurb: 'Baseline inspection record for MV Example. Pair with Scenario 2 (November) and the ports-of-call register.',
-            meta: 'PDF · case study',
+            title: 'Biofouling Inspection of the MV Example — September 2018',
+            blurb: '',
+            meta: 'PDF',
             file: CLEANING + 'Biofouling Inspection of the MV Example_September 2018_V1.0_compressed.pdf'
         },
         {
@@ -91,8 +91,8 @@
             order: 3,
             kind: 'worksheet',
             activity: 'Supporting record',
-            title: 'Ports of call register — MV Example',
-            blurb: 'Where the example vessel has been. Essential for the “same waters” discussion in Activity 1 and for biosecurity risk in the scenarios.',
+            title: 'Ports of Call Register MV Example',
+            blurb: '',
             meta: 'PDF · 1 page',
             file: CLEANING + 'Ports of Call Register MV Example.pdf'
         },
@@ -102,9 +102,9 @@
             order: 7,
             kind: 'policy',
             activity: 'Policy example',
-            title: 'In-water biofouling cleaning policy — interstate or overseas arrivals',
-            blurb: 'Example administration policy (Tasmania NRE template) for vessels arriving from interstate or overseas. Use it when discussing capture of defouled material.',
-            meta: 'PDF · policy',
+            title: 'In-water Biofouling Cleaning Policy for Vessels arriving from Interstate or Overseas',
+            blurb: '',
+            meta: 'PDF',
             file: CLEANING + 'In-water Biofouling Cleaning Policy for Vessels arriving from Interstate or Overseas (1).pdf'
         },
         {
@@ -113,8 +113,8 @@
             order: 0,
             kind: 'manual',
             activity: 'BFS1906 · V2.0',
-            title: 'Participants manual — in-water inspections',
-            blurb: 'Core reading for the inspection track: methods, rating practice and how to document what the ROV (or diver) actually saw.',
+            title: 'BFS1906 IMO Participants Manual — In-Water Inspections V2.0',
+            blurb: '',
             meta: 'PDF · ~150 pages · ~8 MB',
             file: INSPECTION + 'BFS1906 IMO Participants Manual_In-Water Inspections_V2.0 (1)_compressed (1).pdf'
         }
@@ -123,10 +123,10 @@
     var quiz = {
         id: 'activity-1',
         tracks: ['cleaning'],
-        module: 'Module 2 — Understanding fundamentals',
-        title: 'Let’s test your knowledge',
+        module: 'Module 2 – Understanding Fundamentals',
+        title: 'Let’s Test Your Knowledge',
         activity: 'Activity 1',
-        intro: 'Split into groups of 5–6. Discuss each question, then record your group’s answers here. When you are done, choose a spokesperson — we will discuss the answers together.',
+        intro: 'Split into groups of 5-6, discuss and answer the following questions. When completed, select a spokesperson for your group and we will discuss the answers together.',
         storageKey: 'tonga-course-quiz-v1'
     };
 

@@ -32,7 +32,7 @@
     var trackMeta = C.tracks[track];
     document.title = doc.title + ' | Tonga Workshop Portal';
     titleEl.textContent = doc.title;
-    crumbEl.textContent = trackMeta.title + (doc.shared ? ' · shared with both tracks' : '') + ' · ' + doc.activity;
+    crumbEl.textContent = trackMeta.title + (doc.shared ? ' · inspections and cleaning' : '') + ' · ' + doc.activity;
     openEl.href = fileHref;
 
     function showFallback(message) {
@@ -41,7 +41,7 @@
         statusEl.className = 'viewer-fallback';
         prevBtn.hidden = nextBtn.hidden = pageEl.hidden = minusBtn.hidden = plusBtn.hidden = true;
         statusEl.innerHTML =
-            '<p>' + (message || 'This browser needs the native PDF viewer for this file.') + '</p>' +
+            '<p>' + (message || 'PDF could not be displayed.') + '</p>' +
             '<p><a class="v-btn primary" href="' + fileHref + '" target="_blank" rel="noopener">Open PDF</a></p>' +
             '<iframe class="viewer-embed" title="' + doc.title.replace(/"/g, '') + '" src="' + fileHref + '"></iframe>';
     }
@@ -51,8 +51,8 @@
 
     if (!pdfjsLib || isFile) {
         showFallback(isFile
-            ? 'Open this portal over the workshop Wi-Fi (or GitHub Pages) for page-by-page reading. Meanwhile the PDF is below.'
-            : 'Could not load the on-screen reader.');
+            ? 'PDF viewer requires http(s). Open the PDF below.'
+            : 'PDF viewer failed to load.');
         return;
     }
 
@@ -245,6 +245,6 @@
         pdfDoc = pdf;
         buildPages();
     }).catch(function () {
-        showFallback('Could not fetch the PDF in this browser. Use Open PDF — your phone will use its built-in reader.');
+        showFallback('PDF could not be loaded.');
     });
 })();
