@@ -64,6 +64,62 @@
         }
         .tool:hover .tool-cta { background: var(--un-blue); gap: 13px; }
 
+        /* ===== Course pack (two tracks) ===== */
+        .course-home { background: var(--white); border-bottom: 1px solid var(--line); }
+        .tracks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .track-card {
+            display: flex; flex-direction: column;
+            background: var(--bg); border: 1px solid var(--line);
+            border-radius: var(--radius); overflow: hidden;
+            text-decoration: none; color: inherit;
+            box-shadow: var(--shadow); transition: transform .18s ease, box-shadow .18s ease;
+        }
+        .track-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .track-card .tc-banner {
+            height: 8px;
+        }
+        .track-card.cleaning .tc-banner { background: var(--teal); }
+        .track-card.inspection .tc-banner { background: var(--un-blue); }
+        .track-card .tc-body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+        .track-card .tc-kicker {
+            font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+            text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+        }
+        .track-card.inspection .tc-kicker { color: var(--un-blue); }
+        .track-card h3 { font-size: 1.22rem; font-weight: 800; color: var(--imo-navy); }
+        .track-card p { color: var(--muted); margin: 8px 0 16px; flex: 1; font-size: .95rem; }
+        .track-card ul { list-style: none; margin: 0 0 18px; display: grid; gap: 6px; }
+        .track-card li { position: relative; padding-left: 22px; font-size: .88rem; color: #33444f; }
+        .track-card li::before { content: "→"; position: absolute; left: 0; color: var(--teal); font-weight: 800; }
+        .quiz-home {
+            margin-top: 18px;
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+            background:
+                radial-gradient(700px 160px at 100% 0%, rgba(242, 169, 0, .22), transparent 55%),
+                var(--imo-navy);
+            color: #fff; border-radius: var(--radius); padding: 22px 26px;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+        .quiz-home:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .quiz-home .qh-kicker {
+            font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+            text-transform: uppercase; color: var(--gold);
+        }
+        .quiz-home h3 { font-size: 1.2rem; margin: 4px 0 4px; color: #fff; }
+        .quiz-home p { color: #d7e7f4; font-size: .92rem; max-width: 54ch; }
+        .quiz-home .tool-cta { background: var(--gold); color: var(--imo-navy); }
+        .quiz-home:hover .tool-cta { background: #ffc53d; gap: 13px; }
+
+        @media (max-width: 720px) {
+            .tracks { grid-template-columns: 1fr; }
+        }
+
         /* ===== Workshop info ===== */
         .info { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
@@ -132,6 +188,56 @@
             <path fill="#f5f8fb" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
         </svg>
     </header>
+
+    <!-- Course materials -->
+    <section class="course-home" id="course">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">Course pack</div>
+                <h2>Read it on your phone or laptop</h2>
+                <p>The printed folders are in the app: in-water cleaning on one side, in-water inspections on the other. The fouling-rating slide sits in both. Activity 1 is a quiz you answer at the table — not a Word file.</p>
+            </div>
+            <div class="tracks">
+                <a class="track-card cleaning" href="course/index.html?track=cleaning">
+                    <div class="tc-banner"></div>
+                    <div class="tc-body">
+                        <div class="tc-kicker">Track 1</div>
+                        <h3>In-water cleaning</h3>
+                        <p>Activities, MV Example scenarios, ports-of-call register and an example cleaning policy for interstate or overseas arrivals.</p>
+                        <ul>
+                            <li>Activity 1 quiz in the app</li>
+                            <li>Activity 2 — Aus / NZ requirements</li>
+                            <li>Scenarios 1 &amp; 2 plus the September baseline</li>
+                            <li>Shared Activity 6 rating slide</li>
+                        </ul>
+                        <span class="tool-cta">Open the cleaning course →</span>
+                    </div>
+                </a>
+                <a class="track-card inspection" href="course/index.html?track=inspection">
+                    <div class="tc-banner"></div>
+                    <div class="tc-body">
+                        <div class="tc-kicker">Track 2</div>
+                        <h3>In-water inspections</h3>
+                        <p>The participants manual for inspection methods and rating practice, with the same biofouling percentage-cover slide used in the cleaning course.</p>
+                        <ul>
+                            <li>BFS1906 participants manual</li>
+                            <li>Activity 6 — same slide as Track 1</li>
+                            <li>Page-by-page reader on phone or laptop</li>
+                        </ul>
+                        <span class="tool-cta">Open the inspection pack →</span>
+                    </div>
+                </a>
+            </div>
+            <a class="quiz-home" href="course/quiz.html">
+                <div>
+                    <div class="qh-kicker">Activity 1 · Module 2</div>
+                    <h3>Let’s test your knowledge</h3>
+                    <p>Nine questions for tables of 5–6. Type your answers in the app, then hand the screen to your spokesperson.</p>
+                </div>
+                <span class="tool-cta">Start the quiz →</span>
+            </a>
+        </div>
+    </section>
 
     <!-- Tools -->
     <section id="tools">

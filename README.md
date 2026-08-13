@@ -17,6 +17,7 @@ No login, no install — just open `index.html`.
 | Tool | Path | Description |
 |------|------|-------------|
 | **Participant portal** | `index.html` | Branded landing page linking the workshop tools |
+| **Course materials** | `course/index.html` | In-water cleaning and inspection packs, PDF viewer, and Activity 1 quiz |
 | **Hull Fouling Cost Calculator** | `calculator/index.html` | Estimates fuel, cost and emissions penalty from hull fouling |
 | **Demo Hull Inspection Report** | `report/index.html` | Placeholder until the live MarineStream report is published (~30 min after inspection) |
 | **BFMP Generator** | `bfmp/index.html` | Vessel-specific Biofouling Management Plan wizard |

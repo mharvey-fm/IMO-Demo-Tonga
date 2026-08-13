@@ -10,6 +10,7 @@
 
     var tabs = [
         { id: 'portal', href: base + 'index.html', icon: '🏠', label: 'Portal' },
+        { id: 'course', href: base + 'course/index.html', icon: '📚', label: 'Course' },
         { id: 'calculator', href: base + 'calculator/index.html', icon: '📊', label: 'Calculator' },
         { id: 'report', href: base + 'report/index.html', icon: '📋', label: 'Inspection Report' },
         { id: 'bfmp', href: base + 'bfmp/index.html', icon: '📄', label: 'BFMP Generator' },

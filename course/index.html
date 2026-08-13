@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course materials | Tonga Workshop Portal</title>
+    <meta name="description" content="Participant course materials for the MTCC Pacific biofouling training — in-water cleaning course and in-water inspections, plus Activity 1 quiz.">
+    <link rel="icon" href="../assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/portal.css">
+    <link rel="stylesheet" href="course.css">
+</head>
+<body class="course-page">
+
+    <div id="portal-chrome" data-active="course" data-base="../"></div>
+
+    <header class="portal-page-hero">
+        <div class="container">
+            <span class="eyebrow">
+                <img class="flag" src="../assets/to_flag.svg" alt="Flag of Tonga">
+                MTCC Pacific course pack
+            </span>
+            <h1>Course <span class="accent">materials</span></h1>
+            <p class="hero-sub">Everything from the printed participant pack, laid out for a phone at the table or a laptop on the desk. Two tracks — in-water cleaning and in-water inspections — matching the folders you were given.</p>
+            <div class="hero-meta">
+                <span class="meta-chip">🧽 Cleaning course</span>
+                <span class="meta-chip">🔍 Inspections</span>
+                <span class="meta-chip">✍️ Activity 1 quiz in the app</span>
+            </div>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#f5f8fb" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
+        </svg>
+    </header>
+
+    <main class="course-main">
+        <div class="container">
+            <div class="track-switch" role="tablist" aria-label="Course tracks">
+                <button type="button" class="track-btn" id="tab-cleaning" role="tab" aria-pressed="true" data-track="cleaning">
+                    <span class="tb-kicker">Track 1</span>
+                    <span class="tb-title">In-water cleaning</span>
+                    <span class="tb-count" id="count-cleaning"></span>
+                </button>
+                <button type="button" class="track-btn" id="tab-inspection" role="tab" aria-pressed="false" data-track="inspection">
+                    <span class="tb-kicker">Track 2</span>
+                    <span class="tb-title">In-water inspections</span>
+                    <span class="tb-count" id="count-inspection"></span>
+                </button>
+            </div>
+
+            <div class="track-intro" id="track-intro"></div>
+            <div class="material-grid" id="material-grid"></div>
+        </div>
+    </main>
+
+    <footer class="course-foot">
+        <div class="container">Franmarine · MarineStream · Tonga National Technology Demonstration &amp; Training Workshop</div>
+    </footer>
+
+    <script src="../assets/portal-nav.js"></script>
+    <script src="materials.js"></script>
+    <script src="library.js"></script>
+</body>
+</html>
