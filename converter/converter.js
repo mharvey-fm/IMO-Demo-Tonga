@@ -336,6 +336,80 @@
         return txt.replace('–', ' to ');
     }
 
+    function nstmCleanMet() {
+        return state.coat === 'spc'
+            ? (state.fr >= 40 && state.cover >= 20)
+            : (state.fr >= 50 && state.cover >= 10);
+    }
+
+    function lofEquiv(out) {
+        if (out.lofAmbiguous && state.cover <= 5) {
+            return 'LoF 2–3 (ambiguous: several taxa at ' + state.cover + '% cover; Floerl rank 2 is a single taxon)';
+        }
+        if (out.lofAmbiguous && state.cover >= 16) {
+            return 'LoF 3–4 (ambiguous: single taxon at ' + state.cover + '% cover; Floerl rank 4 is more than one taxon)';
+        }
+        return 'LoF ' + out.lof + ' (' + LOF_NAME[out.lof] + ')';
+    }
+
+    function buildReport(out) {
+        var f = frRec(state.fr);
+        var equivLof = lofEquiv(out);
+        var equivImo = 'IMO rating ' + out.imo + ' (' + IMO_NAME[out.imo] + ')';
+        var equivFr = out.frExact
+            ? 'FR-' + state.fr + ' (' + f.name + ')'
+            : out.frText + ' (growth type not specified)';
+
+        if (state.source === 'imo') {
+            var imoLead = 'IMO rating ' + out.imo + ' — ' + IMO_NAME[out.imo];
+            if (out.macro) imoLead += ', ' + dashRange(out.band.txt) + ' cover (' + state.cover + '%)';
+            else if (out.micro && state.cover > 0) imoLead += ', ' + state.cover + '% microfouling cover';
+            var imoAction = out.imo >= 2
+                ? ' Reactive cleaning with capture recommended (MEPC.378(80) table 1 and para. 9.9), to a target of rating 1 or below. BFMP target not met (para. 10.2). Proactive cleaning without capture is not permitted (para. 9.4.1).'
+                : out.imo === 1
+                    ? ' Within the BFMP target of rating 1 or below (para. 10.2). Proactive cleaning without capture may be appropriate (para. 9.4.1) in an area accepted by the relevant authority. Cover does not change this rating for microfouling.'
+                    : ' Surface entirely clean. BFMP target met (para. 10.2).';
+            return imoLead + '. Equivalents: ' + equivLof + '; ' + equivFr + '.' + imoAction;
+        }
+
+        if (state.source === 'fr') {
+            var frLead = 'FR-' + state.fr + ' — ' + f.name;
+            if (state.fr > 0 && state.cover > 0) {
+                frLead += ', ' + (f.cls === 'hard' ? 'hard (calcareous)' : 'soft') + ' fouling over ' + state.cover + '% of area';
+            } else if (state.fr > 0) {
+                frLead += ', ' + (f.cls === 'hard' ? 'hard (calcareous)' : 'soft') + ' fouling';
+            }
+            var frAction;
+            if (state.coat === 'spc') {
+                frAction = nstmCleanMet()
+                    ? ' NSTM hull-clean criterion met for ablative/SPC: FR-40 or greater over 20% of the hull, excluding docking block areas and appendages.'
+                    : ' NSTM hull-clean criterion not met for ablative/SPC (full hull clean at FR-40 or greater over 20% of the hull).';
+            } else {
+                frAction = nstmCleanMet()
+                    ? ' NSTM criterion met for fouling-release: FR-50 or greater over 10% of the hull — NAVSEA 00C to be contacted for cleaning advice.'
+                    : ' NSTM criterion not met for fouling-release (advice trigger is FR-50 or greater over 10% of the hull).';
+            }
+            if (state.fr === 10 || state.fr === 20) {
+                frAction += ' Cover does not change LoF 1 or IMO 1 for biofilm.';
+            }
+            if (state.fr === 30) {
+                frAction += ' NSTM class is soft; IMO treats FR-30 (algal filaments and similar) as macrofouling, so the IMO equivalent is 2 or above, not 1.';
+            }
+            return frLead + '. Equivalents: ' + equivLof + '; ' + equivImo + '.' + frAction;
+        }
+
+        var lofLead = 'LoF ' + out.lof + ' — ' + LOF_NAME[out.lof];
+        if (out.macro) {
+            lofLead += ', ' + dashRange(out.band.txt) + ' cover (' + state.cover + '%)';
+            if (out.lof === 2) lofLead += ', typically a single taxon';
+            if (out.lof === 3) lofLead += '; IMO merges this with LoF 2 as rating 2';
+            if (out.lof === 4) lofLead += ', more than one taxon';
+        } else if (out.micro && state.cover > 0) {
+            lofLead += ', ' + state.cover + '% cover (does not change this rank)';
+        }
+        return lofLead + '. Equivalents: ' + equivImo + '; ' + equivFr + '. Rank scale after Floerl et al. 2005; not a regulatory cleaning trigger.';
+    }
+
     function render() {
         applyCoverRange(false);
         var out = convert();
@@ -402,24 +476,11 @@
             dockBtns[d].setAttribute('aria-pressed', isOn ? 'true' : 'false');
         }
 
-        var action = out.imo >= 2 ? ' Reactive cleaning with capture recommended, to a target of rating 1 or below.'
-            : out.imo === 1 ? ' Within the BFMP target of rating 1 or below. Proactive cleaning may be appropriate.'
-            : ' Within the BFMP target of rating 1 or below.';
-        var coverBit = (out.imo === 0 && out.frExact && state.fr === 0) ? '' : ' over ' + state.cover + '% of area';
-        var line;
-        if (state.source === 'imo') {
-            line = 'IMO rating ' + out.imo
-                + (out.macro ? ', ' + dashRange(out.band.txt) + ' macrofouling cover' : coverBit)
-                + ' (LoF ' + out.lof + '; ' + out.frText + ').' + action;
-        } else if (state.source === 'lof') {
-            line = 'LoF ' + out.lof + coverBit
-                + ' (IMO rating ' + out.imo + '; ' + out.frText + ').' + action;
-        } else {
-            line = 'FR-' + state.fr + (state.fr === 0 ? '' : ' over ' + state.cover + '% of area')
-                + ' (LoF ' + out.lof + '; IMO rating ' + out.imo
-                + (out.macro ? ', ' + dashRange(out.band.txt) + ' macrofouling cover' : '') + ').' + action;
-        }
-        document.getElementById('reportLine').textContent = line;
+        document.getElementById('reportHeading').textContent =
+            state.source === 'imo' ? 'IMO report line'
+            : state.source === 'fr' ? 'FR report line'
+            : 'LoF report line';
+        document.getElementById('reportLine').textContent = buildReport(out);
 
         var flags = [];
         if (state.source === 'fr' && state.fr === 30) {
