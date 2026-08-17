@@ -23,11 +23,11 @@
                 Activity 6 · fouling rating &amp; cover
             </span>
             <h1>Fouling <span class="accent">scale converter</span></h1>
-            <p class="hero-sub">The three scales don’t measure the same thing. NSTM grades what is growing; LoF and IMO grade how much of the area it covers. Give it both and it will express the reading in all three, with the cleaning triggers each one pulls.</p>
+            <p class="hero-sub">The three scales don’t measure the same thing. Pick the one you rated in — IMO is the default — then what you saw. The other two follow, with the caveats where they don’t convert cleanly.</p>
             <div class="hero-meta">
-                <span class="meta-chip">NSTM ch. 081</span>
-                <span class="meta-chip">Floerl LoF</span>
                 <span class="meta-chip">IMO MEPC.378(80)</span>
+                <span class="meta-chip">FR scale · NSTM ch. 081</span>
+                <span class="meta-chip">LoF scale · Floerl</span>
             </div>
         </div>
         <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
@@ -37,11 +37,30 @@
 
     <main class="scale-main">
         <div class="container scale-grid">
+            <div class="readout" role="group" aria-label="Convert from scale" aria-live="polite">
+                <button type="button" class="res fr" id="frCard" data-source="fr" aria-pressed="false">
+                    <h3>FR scale <span class="from">from</span></h3>
+                    <span class="big" id="oFR">FR-30–100</span>
+                    <span class="sub" id="sFR"></span>
+                </button>
+                <button type="button" class="res lof" id="lofCard" data-source="lof" aria-pressed="false">
+                    <h3>LoF scale <span class="from">from</span></h3>
+                    <span class="big" id="oLOF">4</span>
+                    <span class="sub" id="sLOF"></span>
+                </button>
+                <button type="button" class="res imo is-source" id="imoCard" data-source="imo" aria-pressed="true">
+                    <h3>IMO scale <span class="from">from</span></h3>
+                    <span class="big" id="oIMO">3</span>
+                    <span class="sub" id="sIMO"></span>
+                </button>
+            </div>
+            <p class="scale-pick-hint">Select a scale to convert from it.</p>
+
             <div class="scale-stack">
                 <section class="scale-panel">
-                    <p class="scale-step"><span>1</span> What is growing</p>
-                    <div class="ladder" id="ladder" role="radiogroup" aria-label="Growth description"></div>
-                    <p class="scale-hint">Rate the worst square metre in the area, not the average. Both the IMO and NSTM assign an area the highest rating found in it.</p>
+                    <p class="scale-step"><span>1</span> <span id="stepTitle">IMO fouling rating</span></p>
+                    <div class="ladder" id="ladder" role="radiogroup" aria-label="Rating on the selected scale"></div>
+                    <p class="scale-hint" id="stepHint"></p>
                 </section>
 
                 <section class="scale-panel" id="coverPanel">
@@ -50,7 +69,7 @@
                         <span class="cover-label" id="coverLabel">Macrofouling cover of the area</span>
                         <span class="cover-val" id="coverVal">25%</span>
                     </div>
-                    <input type="range" id="cover" min="1" max="100" value="25" step="1" aria-label="Percentage cover">
+                    <input type="range" id="cover" min="16" max="40" value="25" step="1" aria-label="Percentage cover">
                     <div class="bands" id="bands"></div>
                     <p class="cover-note" id="coverNote"></p>
 
@@ -71,32 +90,12 @@
             </div>
 
             <div class="scale-out" id="results">
-                <div class="scale-sticky">
-                    <div class="readout" aria-live="polite">
-                        <div class="res fr">
-                            <h3>NSTM</h3>
-                            <span class="big" id="oFR">FR-50</span>
-                            <span class="sub" id="sFR"></span>
-                        </div>
-                        <div class="res lof" id="lofCard">
-                            <h3>LoF</h3>
-                            <span class="big" id="oLOF">4</span>
-                            <span class="sub" id="sLOF"></span>
-                        </div>
-                        <div class="res imo">
-                            <h3>IMO</h3>
-                            <span class="big" id="oIMO">3</span>
-                            <span class="sub" id="sIMO"></span>
-                        </div>
+                <div class="line-out">
+                    <div class="top">
+                        <h3>Report line</h3>
+                        <button type="button" class="copy" id="copyBtn">Copy</button>
                     </div>
-
-                    <div class="line-out">
-                        <div class="top">
-                            <h3>Report line</h3>
-                            <button type="button" class="copy" id="copyBtn">Copy</button>
-                        </div>
-                        <p id="reportLine"></p>
-                    </div>
+                    <p id="reportLine"></p>
                 </div>
 
                 <div id="flags"></div>
@@ -121,18 +120,18 @@
     </main>
 
     <nav class="scale-dock" aria-label="Current ratings">
-        <a href="#results">
-            <span class="k">NSTM</span>
-            <span class="v" id="dockFR">FR-50</span>
-        </a>
-        <a href="#results">
-            <span class="k">LoF</span>
+        <button type="button" data-source="fr" aria-pressed="false">
+            <span class="k">FR scale</span>
+            <span class="v" id="dockFR">FR-30–100</span>
+        </button>
+        <button type="button" data-source="lof" aria-pressed="false">
+            <span class="k">LoF scale</span>
             <span class="v" id="dockLOF">4</span>
-        </a>
-        <a href="#results">
-            <span class="k">IMO</span>
+        </button>
+        <button type="button" data-source="imo" aria-pressed="true">
+            <span class="k">IMO scale</span>
             <span class="v" id="dockIMO">3</span>
-        </a>
+        </button>
     </nav>
 
     <footer class="scale-foot">
