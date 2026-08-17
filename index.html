@@ -60,6 +60,7 @@
             display: inline-flex; align-items: center; gap: 9px; align-self: flex-start;
             background: var(--imo-navy); color: #fff; font-weight: 700;
             padding: 11px 20px; border-radius: 10px; font-size: .95rem;
+            text-decoration: none;
             transition: background .15s ease, gap .15s ease;
         }
         .tool:hover .tool-cta { background: var(--un-blue); gap: 13px; }
@@ -172,14 +173,20 @@
 
     <header class="portal-page-hero portal-page-hero--home">
         <div class="container">
-            <span class="eyebrow">
-                <img class="flag" src="assets/to_flag.svg" alt="Flag of Tonga">
-                Tonga · Nukuʻalofa
-            </span>
+            <div class="hero-top">
+                <span class="eyebrow">
+                    <img class="flag" src="assets/to_flag.svg" alt="Flag of Tonga">
+                    Tonga · Nukuʻalofa
+                </span>
+                <div class="hero-lockup" aria-label="Implementing partners">
+                    <img src="assets/logo-spc.png" alt="Pacific Community — Communauté du Pacifique">
+                    <img src="assets/logo-mtcc-pacific.png" alt="MTCC Pacific — Maritime Technology Cooperation Centre">
+                </div>
+            </div>
             <h1>Tonga National Technology Demonstration &amp; <span class="accent">Training Workshop</span></h1>
             <p class="hero-sub">Live in-water ROV inspection at Faua Wharf for Tongan policymakers, regulators and port authorities — part of the MTCC Pacific capacity-building course on biofouling risk assessment, inspection methodologies and in-water cleaning under the IMO–Norad TEST Biofouling Project.</p>
             <div class="hero-meta">
-                <span class="meta-chip"><span class="ic">📅</span> 18–21 August 2026</span>
+                <a class="meta-chip" href="agenda/index.html"><span class="ic">🗓️</span> Programme · 18–21 August 2026</a>
                 <span class="meta-chip"><span class="ic">📍</span> Faua Wharf, Nukuʻalofa</span>
                 <span class="meta-chip"><span class="ic">🤝</span> IMO PCU · MTCC Pacific · Marine &amp; Ports</span>
             </div>
@@ -188,6 +195,21 @@
             <path fill="#f5f8fb" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
         </svg>
     </header>
+
+    <!-- Workshop programme -->
+    <section class="agenda-home" id="agenda">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">Workshop programme</div>
+                <h2>Four days in Nukuʻalofa</h2>
+                <p>Opening and technical foundations, the live ROV demonstration at Faua Wharf, inspection and cleaning modules, then national application and closing.</p>
+            </div>
+            <div id="agenda-preview" data-base=""></div>
+            <div class="agenda-home-cta">
+                <a class="tool-cta" href="agenda/index.html">Open the full agenda →</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Course materials -->
     <section class="course-home" id="course">
@@ -387,11 +409,27 @@
                 <div class="kicker">Delivered in partnership</div>
                 <h2>Project partners</h2>
             </div>
-            <div class="partner-row">
-                <div class="partner"><span class="mark">IMO</span><span class="sub">Int'l Maritime Org.</span></div>
-                <div class="partner"><span class="mark">Norad</span><span class="sub">Funding Partner</span></div>
-                <div class="partner"><span class="mark">TEST Biofouling</span><span class="sub">IMO Project</span></div>
-                <div class="partner"><span class="mark">MTCC Pacific</span><span class="sub">SPC · SPREP</span></div>
+            <div class="partner-row partner-logos">
+                <div class="partner partner-logo">
+                    <img src="assets/logo-test-biofouling.png" alt="TEST Biofouling">
+                    <span class="sub">IMO Project</span>
+                </div>
+                <div class="partner partner-logo">
+                    <img src="assets/logo-imo.png" alt="International Maritime Organization">
+                    <span class="sub">Int'l Maritime Org.</span>
+                </div>
+                <div class="partner partner-logo">
+                    <img src="assets/logo-norad.png" alt="Norad">
+                    <span class="sub">Funding Partner</span>
+                </div>
+                <div class="partner partner-logo">
+                    <img src="assets/logo-mtcc-pacific.png" alt="MTCC Pacific">
+                    <span class="sub">SPC · SPREP</span>
+                </div>
+                <div class="partner partner-logo">
+                    <img src="assets/logo-spc.png" alt="Pacific Community">
+                    <span class="sub">Pacific Community</span>
+                </div>
                 <div class="partner"><span class="mark">MOI</span><span class="sub">Marine &amp; Ports</span></div>
                 <div class="partner"><span class="mark">DoE</span><span class="sub">MEIDECC · Tonga</span></div>
                 <div class="partner"><span class="mark">Franmarine</span><span class="sub">Technology Provider</span></div>
@@ -407,9 +445,13 @@
                     <strong>Tonga National Technology Demonstration &amp; Training Workshop</strong><br>
                     <span class="muted">IMO–Norad TEST Biofouling Project · MTCC Pacific course · Faua Wharf, Nukuʻalofa · 18–21 August 2026</span>
                 </div>
-                <div>
-                    <a class="link" href="https://testbiofouling.imo.org/" target="_blank" rel="noopener">testbiofouling.imo.org</a>
+                <div class="footer-logos">
+                    <img src="assets/logo-imo-white.png" alt="International Maritime Organization">
+                    <img src="assets/logo-norad-white.png" alt="Norad">
                 </div>
+            </div>
+            <div>
+                <a class="link" href="https://testbiofouling.imo.org/" target="_blank" rel="noopener">testbiofouling.imo.org</a>
             </div>
             <div class="disclaimer">
                 This participant portal is an educational resource for the capacity-building training course. Live demonstration technology provided by Franmarine Underwater Services; cost calculator tools by MarineStream. Logos and names of partner organisations are used for identification of the project partnership only. Regional implementing partner: MTCC Pacific (SPC · SPREP).
@@ -418,5 +460,6 @@
     </footer>
 
     <script src="assets/portal-nav.js"></script>
+    <script src="assets/workshop-agenda.js"></script>
 </body>
 </html>

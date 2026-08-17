@@ -10,6 +10,7 @@
 
     var tabs = [
         { id: 'portal', href: base + 'index.html', icon: '🏠', label: 'Portal' },
+        { id: 'agenda', href: base + 'agenda/index.html', icon: '🗓️', label: 'Agenda' },
         { id: 'course', href: base + 'course/index.html', icon: '📚', label: 'Course' },
         { id: 'calculator', href: base + 'calculator/index.html', icon: '📊', label: 'Calculator' },
         { id: 'report', href: base + 'report/index.html', icon: '📋', label: 'Inspection Report' },
@@ -24,7 +25,12 @@
     topbar.className = 'portal-topbar';
     topbar.innerHTML =
         '<div class="container">' +
-            '<span><strong>IMO–Norad TEST Biofouling Project</strong> · National Demonstration &amp; Training</span>' +
+            '<div class="topbar-brand">' +
+                '<a class="topbar-logo" href="' + base + 'index.html">' +
+                    '<img src="' + base + 'assets/logo-test-biofouling.png" alt="TEST Biofouling">' +
+                '</a>' +
+                '<span class="topbar-title"><strong>Tonga National Demonstration &amp; Training</strong></span>' +
+            '</div>' +
             '<span class="topbar-actions">' +
                 '<button type="button" class="qr-toggle" aria-pressed="false" aria-controls="portal-qr-panel">Show QR Code</button>' +
                 '<span class="tag">Participant Portal — no login required</span>' +
