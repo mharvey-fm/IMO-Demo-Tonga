@@ -35,8 +35,6 @@
 
         /* ===== Tool cards ===== */
         .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; }
-        /* Four cards read better as a 2x2 block than as a row of three with one orphan. */
-        @media (min-width: 900px) { .tools { grid-template-columns: repeat(2, 1fr); } }
         .tool {
             position: relative; display: flex; flex-direction: column;
             background: var(--white); border: 1px solid var(--line);
@@ -47,6 +45,7 @@
         .tool:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
         .tool-banner { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 3.4rem; }
         .tool-banner.calc  { background: linear-gradient(135deg, #1E4D78, #0b2e4f); }
+        .tool-banner.scale { background: linear-gradient(135deg, #d97706, #0b2e4f); }
         .tool-banner.report { background: linear-gradient(135deg, var(--maroon), #8a0000); }
         .tool-banner.bfmp   { background: linear-gradient(135deg, #0fa39b, #0b6e74); }
         .tool-banner.vis    { background: linear-gradient(135deg, #5d7c91, #2a4a63); }
@@ -264,9 +263,22 @@
             <div class="section-head">
                 <div class="kicker">Workshop Resources</div>
                 <h2>Your participant toolkit</h2>
-                <p>Four practical, browser-based resources used in the demonstration. No sign-in, no install — open them on your phone, tablet or laptop.</p>
+                <p>Five practical, browser-based resources used in the demonstration. No sign-in, no install — open them on your phone, tablet or laptop.</p>
             </div>
             <div class="tools">
+                <a class="tool" href="converter/index.html">
+                    <div class="tool-banner scale">⚖️</div>
+                    <div class="tool-body">
+                        <h3>Fouling Scale Converter</h3>
+                        <p class="lede">NSTM, Floerl LoF and IMO MEPC.378(80) don’t measure the same thing. Give it what is growing and how much of the area it covers — it expresses the reading in all three, with the cleaning triggers each one pulls.</p>
+                        <ul>
+                            <li>NSTM FR-0 to FR-100 from the growth description</li>
+                            <li>LoF and IMO from percentage cover</li>
+                            <li>Cleaning triggers and a copyable report line</li>
+                        </ul>
+                        <span class="tool-cta">Open the converter →</span>
+                    </div>
+                </a>
                 <a class="tool" href="calculator/index.html">
                     <div class="tool-banner calc">📊</div>
                     <div class="tool-body">

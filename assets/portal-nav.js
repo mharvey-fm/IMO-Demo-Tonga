@@ -13,6 +13,7 @@
         { id: 'agenda', href: base + 'agenda/index.html', icon: '🗓️', label: 'Agenda' },
         { id: 'course', href: base + 'course/index.html', icon: '📚', label: 'Course' },
         { id: 'calculator', href: base + 'calculator/index.html', icon: '📊', label: 'Calculator' },
+        { id: 'converter', href: base + 'converter/index.html', icon: '⚖️', label: 'Fouling Scale Converter' },
         { id: 'report', href: base + 'report/index.html', icon: '📋', label: 'Inspection Report' },
         { id: 'bfmp', href: base + 'bfmp/index.html', icon: '📄', label: 'BFMP Generator' },
         { id: 'visibility', href: base + 'visibility/index.html', icon: '🌫️', label: 'Poor Visibility' }

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fouling Scale Converter | Tonga Workshop Portal</title>
+    <meta name="description" content="Convert between NSTM fouling rating, Floerl Level of Fouling, and IMO MEPC.378(80) ratings — with cleaning triggers for each scale.">
+    <link rel="icon" href="../assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/portal.css">
+    <link rel="stylesheet" href="converter.css">
+</head>
+<body class="scale-page">
+
+    <div id="portal-chrome" data-active="converter" data-base="../"></div>
+
+    <header class="portal-page-hero">
+        <div class="container">
+            <span class="eyebrow">
+                <img class="flag" src="../assets/to_flag.svg" alt="Flag of Tonga">
+                Activity 6 · fouling rating &amp; cover
+            </span>
+            <h1>Fouling <span class="accent">scale converter</span></h1>
+            <p class="hero-sub">The three scales don’t measure the same thing. NSTM grades what is growing; LoF and IMO grade how much of the area it covers. Give it both and it will express the reading in all three, with the cleaning triggers each one pulls.</p>
+            <div class="hero-meta">
+                <span class="meta-chip">NSTM ch. 081</span>
+                <span class="meta-chip">Floerl LoF</span>
+                <span class="meta-chip">IMO MEPC.378(80)</span>
+            </div>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#f5f8fb" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
+        </svg>
+    </header>
+
+    <main class="scale-main">
+        <div class="container scale-grid">
+            <div class="scale-stack">
+                <section class="scale-panel">
+                    <p class="scale-step"><span>1</span> What is growing</p>
+                    <div class="ladder" id="ladder" role="radiogroup" aria-label="Growth description"></div>
+                    <p class="scale-hint">Rate the worst square metre in the area, not the average. Both the IMO and NSTM assign an area the highest rating found in it.</p>
+                </section>
+
+                <section class="scale-panel" id="coverPanel">
+                    <p class="scale-step"><span>2</span> Cover</p>
+                    <div class="cover-head">
+                        <span class="cover-label" id="coverLabel">Macrofouling cover of the area</span>
+                        <span class="cover-val" id="coverVal">25%</span>
+                    </div>
+                    <input type="range" id="cover" min="1" max="100" value="25" step="1" aria-label="Percentage cover">
+                    <div class="bands" id="bands"></div>
+                    <p class="cover-note" id="coverNote"></p>
+
+                    <div class="opts">
+                        <label class="opt" id="taxaRow">
+                            <input type="checkbox" id="taxa" checked>
+                            <span>More than one taxon present (barnacles and algae, tubeworms and bryozoans, and so on)</span>
+                        </label>
+                        <div class="seg-row">
+                            <span>Coating type</span>
+                            <span class="seg" id="coat" role="radiogroup" aria-label="Coating type">
+                                <label class="on"><input type="radio" name="coat" value="spc" checked> Ablative / SPC</label>
+                                <label><input type="radio" name="coat" value="fr"> Fouling release</label>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="scale-out" id="results">
+                <div class="scale-sticky">
+                    <div class="readout" aria-live="polite">
+                        <div class="res fr">
+                            <h3>NSTM</h3>
+                            <span class="big" id="oFR">FR-50</span>
+                            <span class="sub" id="sFR"></span>
+                        </div>
+                        <div class="res lof" id="lofCard">
+                            <h3>LoF</h3>
+                            <span class="big" id="oLOF">4</span>
+                            <span class="sub" id="sLOF"></span>
+                        </div>
+                        <div class="res imo">
+                            <h3>IMO</h3>
+                            <span class="big" id="oIMO">3</span>
+                            <span class="sub" id="sIMO"></span>
+                        </div>
+                    </div>
+
+                    <div class="line-out">
+                        <div class="top">
+                            <h3>Report line</h3>
+                            <button type="button" class="copy" id="copyBtn">Copy</button>
+                        </div>
+                        <p id="reportLine"></p>
+                    </div>
+                </div>
+
+                <div id="flags"></div>
+
+                <div class="block">
+                    <h2>What this triggers</h2>
+                    <div id="triggers"></div>
+                </div>
+
+                <div class="block">
+                    <h2>How it was derived</h2>
+                    <div class="why"><ul id="why"></ul></div>
+                </div>
+
+                <p class="scale-sources">
+                    <b>Sources.</b> NSTM Chapter 081 (NAVSEA, rev. 2006) fouling rating scale and cleaning interval criteria; Floerl et al. 2005 Level of Fouling rank scale; IMO resolution MEPC.378(80) table 1, paragraphs 8.8, 9.4, 9.9 and 10.2.
+                    <br><br>
+                    <b>Read the outputs as ratings, not measurements.</b> The FR is read off the growth description and carries its cover figure separately, so it never converts cleanly to LoF or IMO on its own. LoF and IMO share their breakpoints above 15% cover but diverge below it, where the IMO merges LoF 2 and 3 into a single band. Where a judgement is genuinely ambiguous this tool says so rather than picking a number for you.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <nav class="scale-dock" aria-label="Current ratings">
+        <a href="#results">
+            <span class="k">NSTM</span>
+            <span class="v" id="dockFR">FR-50</span>
+        </a>
+        <a href="#results">
+            <span class="k">LoF</span>
+            <span class="v" id="dockLOF">4</span>
+        </a>
+        <a href="#results">
+            <span class="k">IMO</span>
+            <span class="v" id="dockIMO">3</span>
+        </a>
+    </nav>
+
+    <footer class="scale-foot">
+        <div class="container">Franmarine · MarineStream · Tonga National Technology Demonstration &amp; Training Workshop</div>
+    </footer>
+
+    <script src="../assets/portal-nav.js"></script>
+    <script src="converter.js"></script>
+</body>
+</html>
