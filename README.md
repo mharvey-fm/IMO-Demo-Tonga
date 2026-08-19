@@ -20,7 +20,7 @@ No login, no install — just open `index.html`.
 | **Course materials** | `course/index.html` | In-water cleaning and inspection packs, PDF viewer, and Activity 1 quiz |
 | **Hull Fouling Cost Calculator** | `calculator/index.html` | Estimates fuel, cost and emissions penalty from hull fouling |
 | **Fouling Scale Converter** | `converter/index.html` | Converts NSTM FR, Floerl LoF and IMO MEPC.378(80) ratings from growth type and cover |
-| **Demo Hull Inspection Report** | `report/index.html` | Placeholder until the live MarineStream report is published (~30 min after inspection) |
+| **Demo Hull Inspection Report** | `report/index.html` | MarineStream report from the Faua Wharf ROV demonstration |
 | **BFMP Generator** | `bfmp/index.html` | Vessel-specific Biofouling Management Plan wizard |
 
 ## Course context
@@ -53,8 +53,9 @@ Custom domain (optional): `tongabiofoulingdemo.andagainapps.com` via `CNAME`.
 
 ## Inspection report
 
-The report page shows a placeholder until the live Faua Wharf ROV demo report is ready
-(about 30 minutes after the inspection is complete).
+The Inspection Report tab (`report/index.html`) embeds the MarineStream biofouling hull
+inspection report from the live Faua Wharf demonstration
+(`assets/IMO Tonga Demo - Biofouling Hull Inspection Report_compressed.pdf`).
 
 ## Reporting invasive marine species in Tonga
 

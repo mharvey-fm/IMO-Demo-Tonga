@@ -4,136 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inspection Report | Tonga Workshop Portal</title>
-    <meta name="description" content="Demo biofouling hull inspection report — Faua Wharf, Nukuʻalofa, 18–21 August 2026. Available shortly after the live ROV inspection.">
+    <meta name="description" content="MarineStream biofouling hull inspection report from the Faua Wharf demonstration, Nukuʻalofa — 19 August 2026.">
     <link rel="icon" href="../assets/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/portal.css">
+    <link rel="stylesheet" href="../course/course.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--ink);
-            background: var(--bg);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .placeholder-wrap {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px 56px;
-        }
-
-        .placeholder {
-            width: min(640px, 100%);
-            text-align: center;
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 48px 36px;
-        }
-
-        .placeholder-icon {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 22px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(193, 0, 0, .12), rgba(11, 46, 79, .08));
-            color: var(--maroon);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
-
-        .placeholder .kicker {
-            color: var(--teal);
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            font-size: .78rem;
-            margin-bottom: 10px;
-        }
-
-        .placeholder h2 {
-            font-size: clamp(1.25rem, 3vw, 1.55rem);
-            font-weight: 800;
-            color: var(--imo-navy);
-            margin-bottom: 14px;
-            line-height: 1.35;
-        }
-
-        .placeholder p {
-            color: var(--muted);
-            font-size: 1.02rem;
-            max-width: 42ch;
-            margin: 0 auto;
-        }
-
-        .placeholder .hint {
-            margin-top: 22px;
-            padding-top: 18px;
-            border-top: 1px solid var(--line);
-            font-size: .88rem;
-            color: #7a8b99;
-        }
-
-        footer {
-            flex-shrink: 0;
-            background: var(--imo-navy);
-            color: #7fa0bb;
-            padding: 20px 0;
-            font-size: .8rem;
-            text-align: center;
-        }
-        footer .container { width: min(1140px, 92vw); margin: 0 auto; }
+        .portal-page-hero .container { padding: 28px 0 36px; }
+        .portal-page-hero h1 { margin: 10px 0 8px; }
     </style>
 </head>
-<body>
+<body class="course-page viewer-page">
 
     <div id="portal-chrome" data-active="report" data-base="../"></div>
 
     <header class="portal-page-hero">
         <div class="container">
-            <span class="eyebrow">
-                <img class="flag" src="../assets/to_flag.svg" alt="Flag of Tonga">
-                Tonga · Nukuʻalofa
-            </span>
+            <div class="hero-top">
+                <span class="eyebrow">
+                    <img class="flag" src="../assets/to_flag.svg" alt="Flag of Tonga">
+                    Tonga · Nukuʻalofa
+                </span>
+                <a class="ms-brand" href="https://www.marinestream.com.au" target="_blank" rel="noopener noreferrer" title="MarineStream — visit website">
+                    <img src="../assets/marinestream_logo_white.png" alt="MarineStream">
+                </a>
+            </div>
             <h1>Demo Biofouling Hull Inspection Report</h1>
-            <p class="hero-sub">Example MarineStream report from the Faua Wharf demonstration — a training aid showing how in-water inspection data becomes an auditable Fouling Rating record under MEPC.378(80).</p>
+            <p class="hero-sub">MarineStream report from the Faua Wharf demonstration — a training aid showing how in-water inspection data becomes an auditable Fouling Rating record under MEPC.378(80).</p>
             <div class="hero-meta">
-                <span class="meta-chip">🚢 Vessel of opportunity · TBA</span>
-                <span class="meta-chip">📍 Faua Wharf, Nukuʻalofa</span>
-                <span class="meta-chip">📅 18–21 August 2026</span>
+                <span class="meta-chip">🚢 Faua Wharf demonstration</span>
+                <span class="meta-chip">📍 Nukuʻalofa</span>
+                <span class="meta-chip">📅 19 August 2026</span>
             </div>
         </div>
         <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-            <path fill="#f5f8fb" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
+            <path fill="#ffffff" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path>
         </svg>
     </header>
 
-    <div class="placeholder-wrap">
-        <div class="placeholder" role="status">
-            <div class="placeholder-icon" aria-hidden="true">📋</div>
-            <div class="kicker">Report pending</div>
-            <h2>30 minutes after the inspection is complete, the Biofouling inspection report will be available here</h2>
-            <p>The example MarineStream report from the Faua Wharf demonstration will be published on this page for use as a training aid once generation and review are complete.</p>
-            <p class="hint">Refresh this page after the live demonstration wraps up.</p>
+    <div class="viewer-toolbar">
+        <div class="container">
+            <div class="viewer-titles">
+                <div class="crumb">MarineStream report</div>
+                <h1 id="v-title">Biofouling Hull Inspection Report</h1>
+            </div>
+            <div class="viewer-controls" id="v-controls">
+                <button type="button" class="v-btn" id="v-prev" disabled aria-label="Previous page">‹</button>
+                <span class="page-ind" id="v-page">—</span>
+                <button type="button" class="v-btn" id="v-next" disabled aria-label="Next page">›</button>
+                <button type="button" class="v-btn" id="v-minus" aria-label="Zoom out">−</button>
+                <button type="button" class="v-btn" id="v-plus" aria-label="Zoom in">+</button>
+                <a class="v-btn" id="v-download" href="#" download="IMO-Tonga-Demo-Biofouling-Hull-Inspection-Report.pdf">Download</a>
+                <a class="v-btn primary" id="v-open" href="#" target="_blank" rel="noopener">Open PDF</a>
+            </div>
         </div>
     </div>
 
-    <footer>
+    <main class="course-main viewer-stage" id="v-stage"
+          data-pdf="../assets/IMO Tonga Demo - Biofouling Hull Inspection Report_compressed.pdf"
+          data-title="Biofouling Hull Inspection Report">
+        <div id="v-status" class="viewer-status">
+            <p>Opening the inspection report…</p>
+        </div>
+        <div class="viewer-canvas-wrap" id="v-wrap" hidden>
+            <div class="pdf-pages" id="v-pages"></div>
+        </div>
+    </main>
+
+    <footer class="course-foot">
         <div class="container">Franmarine · MarineStream · Tonga National Technology Demonstration &amp; Training Workshop</div>
     </footer>
 
     <script src="../assets/portal-nav.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="viewer.js"></script>
 </body>
 </html>
